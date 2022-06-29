@@ -1,3 +1,12 @@
+#' Loads screenshot data from a folder
+#'
+#' @description the function expects a single recording in the folder
+#' @param folder
+#'
+#' @return
+#' @export
+#'
+#' @examples
 load_screenshot_data <- function(folder){
   res <- list()
   timestamps <- get_folder_timestamps(folder)
@@ -28,7 +37,12 @@ load_position_log <- function(folder, timestamp){
 }
 
 load_scene_analysis_log <- function(folder, timestamp){
-  return(find_and_load_log(folder, "scene-analysis", timestamp))
+  df_scene <- find_and_load_log(folder, "scene-analysis", timestamp)
+  df_scene <- df_scene %>%
+    group_by(iAnalysis) %>%
+    mutate(ratio = nHits/sum(nHits)) %>%
+    ungroup()
+  return(df_scene)
 }
 
 load_screen_position_log <- function(folder, timestamp){
