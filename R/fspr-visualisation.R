@@ -33,12 +33,19 @@ plot_screenshot_analysis <- function(fspr_obj, i_screenshot){
 #' @export
 #'
 #' @examples
-plot_positions_and_path <- function(fspr_obj){
-  ggplot(fspr_obj$object_positions, aes(position_x, position_y)) +
+plot_positions_and_path <- function(fspr_obj, i_screenshot = NULL){
+  plt <- ggplot(fspr_obj$object_positions, aes(position_x, position_y)) +
     geom_path(data = fspr_obj$position) +
     geom_point() +
     ggrepel::geom_text_repel(aes(label=object)) +
     geom_point(aes(x = fspr_obj$position$position_x[1],
                    y = fspr_obj$position$position_y[1]),
                shape=18, size = 10)
+  if(!is.null(i_screenshot) && is.numeric(i_screenshot)){
+    plt <- plt +
+      geom_point(aes(x = fspr_obj$position$position_x[i_screenshot],
+                     y = fspr_obj$position$position_y[i_screenshot]),
+                 shape=20, size = 10, color = "pink")
+  }
+  return(plt)
 }
