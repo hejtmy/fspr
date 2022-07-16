@@ -19,6 +19,7 @@ load_screenshot_data <- function(folder){
   res$scene_analysis <- load_scene_analysis_log(folder, timestamps[1])
   res$screen_position <- load_screen_position_log(folder, timestamps[1])
   res$object_positions <- load_object_positions_log(folder, timestamps[1])
+  class(res) <- append(class(res), c("fspr", "fspr.screenshots"))
   return(res)
 }
 
@@ -30,7 +31,7 @@ get_folder_timestamps <- function(folder){
 
 load_position_log <- function(folder, timestamp){
   process_position <- function(df_log){
-    df_log <- vector3_to_columns(df_log, "position", FALSE, TRUE)
+    df_log <- vector3_to_columns(df_log, "position", TRUE)
     return(df_log)
   }
   return(find_and_load_log(folder, "position", timestamp, process_position))
@@ -50,8 +51,9 @@ load_screen_position_log <- function(folder, timestamp){
 }
 
 load_object_positions_log <- function(folder, timestamp){
-  return(find_and_load_log(folder, "object-positions", timestamp))
-
+  log <- find_and_load_log(folder, "object-positions", timestamp)
+  log <- vector3_to_columns(log, "position", TRUE)
+  return(log)
 }
 
 find_and_load_log <- function(folder, name, timestamp, process_function = NULL){
