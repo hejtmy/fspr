@@ -19,6 +19,9 @@ create_screenshot_summaries <- function(fspr_obj){
   return(df_res)
 }
 
+#' @export
+#' @describeIn create_screenshot_summaries Creates a single summary based on
+#' given screenshot index
 create_screenshot_summary <- function(fspr_obj, i_screenshot){
   # distance from all the objects
   df_res <- filter(fspr_obj$scene_analysis,

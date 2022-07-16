@@ -1,0 +1,35 @@
+---
+title: "General use"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{loading}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(fspr)
+```
+
+```{r}
+fspr_original <- load_screenshot_data("../tests/testdata/original/")
+str(fspr_original)
+```
+
+## Analyses
+```{r}
+create_screenshot_summary(fspr_original, 56)
+```
+
+## Plotting
+```{r}
+plot_positions_and_path(fspr_original, 56)
+```

@@ -2,9 +2,12 @@
 % Please edit documentation in R/fspr-analysis.R
 \name{create_screenshot_summaries}
 \alias{create_screenshot_summaries}
+\alias{create_screenshot_summary}
 \title{Creates a screenshot analysis summaries for}
 \usage{
 create_screenshot_summaries(fspr_obj)
+
+create_screenshot_summary(fspr_obj, i_screenshot)
 }
 \arguments{
 \item{fspr_obj}{fspr screenshots object}
@@ -15,3 +18,9 @@ data.frame
 \description{
 Creates a screenshot analysis summaries for
 }
+\section{Functions}{
+\itemize{
+\item \code{create_screenshot_summary}: Creates a single summary based on
+given screenshot index
+}}
+
