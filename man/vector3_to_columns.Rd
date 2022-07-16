@@ -5,7 +5,7 @@
 \title{turns vector columns in string "(x, y, z)" into three
 columns(position_x, position_y, position_z) and returns the table}
 \usage{
-vector3_to_columns(df_position, column, flip_yz = TRUE, remove = TRUE)
+vector3_to_columns(df_position, column, remove = TRUE)
 }
 \description{
 turns vector columns in string "(x, y, z)" into three

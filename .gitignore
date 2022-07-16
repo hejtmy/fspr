@@ -6,3 +6,4 @@
 tests/data
 *playground.R
 temp/
+inst/doc
