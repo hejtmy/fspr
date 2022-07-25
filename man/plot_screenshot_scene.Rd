@@ -5,10 +5,19 @@
 \title{plots position of objects on the screen with approximate size as per their
  visual size}
 \usage{
-plot_screenshot_scene(fspr_obj, i_screenshot, width = 0.1)
+plot_screenshot_scene(
+  fspr_obj,
+  i_screenshot,
+  include_screenshot = FALSE,
+  screenshots_path = NULL
+)
 }
 \arguments{
-\item{i_screenshot}{}
+\item{fspr_obj}{object to plot}
+
+\item{i_screenshot}{which screenshot to plot}
+
+\item{screenshots_path}{}
 }
 \value{
 
