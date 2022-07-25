@@ -9,13 +9,15 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Depends:
+  dplyr,
+  ggplot2
 Imports:
-  stringr,
-  dplyr
+  stringr
 Suggests: 
-    rmarkdown,
-    knitr,
-    testthat (>= 3.0.0)
+  rmarkdown,
+  knitr,
+  testthat (>= 3.0.0)
 Config/testthat/edition: 3
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
