@@ -1,6 +1,7 @@
-# Helpers -----------
+#  Helpers -----------
 #' turns vector columns in string "(x, y, z)" into three
 #' columns(position_x, position_y, position_z) and returns the table
+#' @noRd
 vector3_to_columns <- function(df_position, column, remove = TRUE){
   if(!requireNamespace("stringr", quietly = TRUE)){
     print("Cannot continue withouth stringr package. Please install it")

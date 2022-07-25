@@ -29,13 +29,12 @@ plot_screenshot_scene <- function(fspr_obj, i_screenshot, include_screenshot = F
   return(plt)
 }
 
-plot_screenshot_analysis <- function(fspr_obj, i_screenshot){
-
-}
 
 #' Plots position and object data
 #'
-#' @param fspr_obj
+#' @param fspr_obj fspr screenshot object
+#' @param i_screenshotindex  index of a screenthot. If provided, it marks
+#' a position on the path where the camera was at the time of that particular screenshot
 #'
 #' @return
 #' @export

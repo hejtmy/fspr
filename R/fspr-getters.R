@@ -1,6 +1,5 @@
 get_screenshot_data <- function(fspr_obj, i_screenshot){
   res <- list()
-
   res <- sapply(names(fspr_obj))
   res$postition
 }
