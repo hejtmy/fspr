@@ -7,16 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 library(fspr)
 ```
+
 ```{r}
 fspr_original <- load_screenshot_data("../tests/testdata/original/")
 str(fspr_original)

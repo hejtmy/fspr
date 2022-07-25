@@ -8,7 +8,6 @@ vignette: >
 ---
 
 ```{r setup, warning=FALSE, message=FALSE}
-library(tidyverse)
 library(fspr)
 ```
 

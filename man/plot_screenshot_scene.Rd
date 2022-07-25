@@ -17,7 +17,10 @@ plot_screenshot_scene(
 
 \item{i_screenshot}{which screenshot to plot}
 
-\item{screenshots_path}{}
+\item{include_screenshot}{should the oriignal screenshot be included}
+
+\item{screenshots_path}{if screenshot should be included, what folder are the
+screenshots placed in? It will be searched for automatically based on i_screenshot}
 }
 \value{
 

@@ -7,7 +7,10 @@
 plot_positions_and_path(fspr_obj, i_screenshot = NULL)
 }
 \arguments{
-\item{fspr_obj}{}
+\item{fspr_obj}{fspr screenshot object}
+
+\item{i_screenshotindex}{index of a screenthot. If provided, it marks
+a position on the path where the camera was at the time of that particular screenshot}
 }
 \value{
 
