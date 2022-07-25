@@ -7,13 +7,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
 ```{r setup, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(fspr)
@@ -26,10 +19,6 @@ str(fspr_original)
 
 ## Analyses
 ```{r}
-create_screenshot_summary(fspr_original, 56)
+create_screenshot_summary(fspr_original, 66)
 ```
 
-## Plotting
-```{r}
-plot_positions_and_path(fspr_original, 56)
-```
