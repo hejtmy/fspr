@@ -10,11 +10,9 @@
 load_screenshot_data <- function(folder){
   res <- list()
   timestamps <- get_folder_timestamps(folder)
-  if(length(timestamps) != 1){
-    warning("there are multiple logs from different recordings in the folder,
-            select a timestamp")
-    return(NULL)
-  }
+  stopifnot("there are multiple logs from different recordings in the folder,
+            select a timestamp" = (length(timestamps) < 2),
+            "No logs found" = (length(timestamps) > 0))
   res$position <- load_position_log(folder, timestamps[1])
   res$scene_analysis <- load_scene_analysis_log(folder, timestamps[1])
   res$screen_position <- load_screen_position_log(folder, timestamps[1])
