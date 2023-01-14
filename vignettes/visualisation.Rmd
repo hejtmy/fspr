@@ -25,7 +25,7 @@ plot_positions_and_path(fspr_original, 56)
 
 ## Plotting screenshots 
 ```{r}
-plot_screenshot_scene(fspr_original, i_screenshot = 40, include_screenshot = TRUE,
-                              screenshots_path = "../tests/testdata/screenshots/")
+plot_screenshot_scene(fspr_original, i_screenshot = 40,
+  include_screenshot = TRUE, screenshots_path = "../tests/testdata/screenshots/")
 ```
 

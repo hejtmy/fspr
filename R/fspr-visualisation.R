@@ -68,5 +68,3 @@ get_screenshot_raster <- function(base_path, index){
   g <- grid::rasterGrob(png, interpolate=TRUE, width = unit(1, "npc"), height = unit(1, "npc"))
   return(g)
 }
-
-

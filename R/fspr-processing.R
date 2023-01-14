@@ -3,7 +3,7 @@
 #' columns(position_x, position_y, position_z) and returns the table
 #' @noRd
 vector3_to_columns <- function(df_position, column, remove = TRUE){
-  if(!requireNamespace("stringr", quietly = TRUE)){
+  if (!requireNamespace("stringr", quietly = TRUE)){
     print("Cannot continue withouth stringr package. Please install it")
     return(FALSE)
   }
@@ -16,8 +16,6 @@ vector3_to_columns <- function(df_position, column, remove = TRUE){
   colnames(pos) <- new_names
   pos <- mutate(pos, across(everything(), as.numeric))
   df_position <- tibble::add_column(df_position, pos, .after = column)
-  if(remove){
-    df_position <- select(df_position, -column)
-  }
+  if (remove) df_position <- select(df_position, -column)
   return(df_position)
 }
