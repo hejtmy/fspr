@@ -40,6 +40,7 @@ create_screenshot_summary <- function(fspr_obj, i_screenshot){
     mutate(camera_distance = euclid_distance(c(position_x, position_y),
       camera_position[1:2])) %>%
     select(object, camera_distance) %>%
-    right_join(df_res, by="object")
+    right_join(df_res, by="object") %>%
+    ungroup()
   return(df_res)
 }
