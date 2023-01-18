@@ -6,17 +6,21 @@
 #' @export
 #'
 #' @examples
-create_screenshot_summaries <- function(fspr_obj){
+create_screenshot_summaries <- function(fspr_obj) {
   if (!("fspr.screenshots" %in% class(fspr_obj))){
     warning("this is not a screenshot object")
     return(NULL)
   }
   df_res <- data.frame()
-  for (i_screenshot in unique(fspr_obj$scene_analysis$iAnalysis)){
-    df_screenshot <- create_screenshot_summary(fspr_obj, i_screenshot)
-    if(is.null(df_screenshot)) next()
+  i_screenshots <- unique(fspr_obj$scene_analysis$iAnalysis)
+  tProgress <- txtProgressBar(max = length(i_screenshots), style = 3)
+  for (i in seq_len(length(i_screenshots))){
+    df_screenshot <- create_screenshot_summary(fspr_obj, i_screenshots[i])
+    if (is.null(df_screenshot)) next()
     df_res <- rbind(df_res, df_screenshot)
+    setTxtProgressBar(tProgress, i)
   }
+  close(tProgress)
   return(df_res)
 }
 
