@@ -1,10 +1,7 @@
 ---
 title: "visualisation"
 output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{visualisation}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+
 ---
 
 ```{r setup, message=FALSE, warning=FALSE}
@@ -12,20 +9,17 @@ library(fspr)
 ```
 
 ```{r}
-fspr_original <- load_screenshot_data("../tests/testdata/original/")
-str(fspr_original)
+
 ```
 
 ## Plotting
 
 ```{r}
-plot_positions_and_path(fspr_original, 56)
 ```
 
 
 ## Plotting screenshots 
 ```{r}
-plot_screenshot_scene(fspr_original, i_screenshot = 40,
-  include_screenshot = TRUE, screenshots_path = "../tests/testdata/screenshots/")
+
 ```
 
