@@ -14,6 +14,7 @@ create_screenshot_summaries <- function(fspr_obj){
   df_res <- data.frame()
   for (i_screenshot in unique(fspr_obj$scene_analysis$iAnalysis)){
     df_screenshot <- create_screenshot_summary(fspr_obj, i_screenshot)
+    if(is.null(df_screenshot)) next()
     df_res <- rbind(df_res, df_screenshot)
   }
   return(df_res)
@@ -24,23 +25,24 @@ create_screenshot_summaries <- function(fspr_obj){
 #' given screenshot index
 create_screenshot_summary <- function(fspr_obj, i_screenshot){
   # distance from all the objects
-  df_res <- filter_screenshot(fspr_obj$scene_analysis, i_screenshot) %>%
+  df_res <- filter_screenshot(fspr_obj$scene_analysis, i_screenshot) 
+  if (is.null(df_res)) return(NULL)
+  df_res <- df_res %>%
     left_join(select(fspr_obj$screen_position, -time),
                by = c("iAnalysis", "object")) %>%
     filter(object != "nothing")
 
-  camera_position <- filter(fspr_obj$position,
-         iAnalysis == i_screenshot) %>%
+  camera_position <- filter(fspr_obj$position, iAnalysis == i_screenshot) %>%
     select(starts_with("position")) %>%
     as.vector()
 
-  df_res <- fspr_obj$object_positions %>%
+  df_positions <- fspr_obj$object_positions %>%
     filter(object %in% df_res$object) %>%
     rowwise() %>%
     mutate(camera_distance = euclid_distance(c(position_x, position_y),
-      camera_position[1:2])) %>%
+                                              camera_position[1:2])) %>%
     select(object, camera_distance) %>%
-    right_join(df_res, by="object") %>%
     ungroup()
+  df_res <- right_join(df_positions, df_res, by = "object")
   return(df_res)
 }
