@@ -27,6 +27,7 @@ create_screenshot_summaries <- function(fspr_obj) {
 #' @export
 #' @describeIn create_screenshot_summaries Creates a single summary based on
 #' given screenshot index
+#'
 create_screenshot_summary <- function(fspr_obj, i_screenshot){
   # distance from all the objects
   df_res <- filter_screenshot(fspr_obj$scene_analysis, i_screenshot) 
@@ -44,7 +45,7 @@ create_screenshot_summary <- function(fspr_obj, i_screenshot){
     filter(object %in% df_res$object) %>%
     rowwise() %>%
     mutate(camera_distance = euclid_distance(c(position_x, position_y),
-                                              camera_position[1:2])) %>%
+                                             camera_position[1:2])) %>%
     select(object, camera_distance) %>%
     ungroup()
   df_res <- right_join(df_positions, df_res, by = "object")

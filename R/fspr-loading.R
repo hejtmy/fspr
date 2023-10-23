@@ -40,15 +40,13 @@ load_scene_analysis_log <- function(folder, timestamp) {
   df_scene <- df_scene %>%
     group_by(iAnalysis) %>%
     mutate(ratio = nHits/sum(nHits)) %>%
-    ungroup() %>%
-    mutate(iAnalysis = iAnalysis - 1) # TODO this might chagne
+    ungroup()
   return(df_scene)
 }
 
 load_screen_position_log <- function(folder, timestamp) {
   log <- find_and_load_log(folder, "screen-position", timestamp)
   log$screen_y <- 1 - log$screen_y
-  log$iAnalysis <- log$iAnalysis - 1 #TODO this might change
   return(log)
 }
 
