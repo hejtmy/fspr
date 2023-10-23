@@ -30,16 +30,18 @@ create_screenshot_summaries <- function(fspr_obj) {
 #'
 create_screenshot_summary <- function(fspr_obj, i_screenshot){
   # distance from all the objects
-  df_res <- filter_screenshot(fspr_obj$scene_analysis, i_screenshot) 
+  df_res <- filter_screenshot(fspr_obj$scene_analysis, i_screenshot)
   if (is.null(df_res)) return(NULL)
   df_res <- df_res %>%
     left_join(select(fspr_obj$screen_position, -time),
                by = c("iAnalysis", "object")) %>%
     filter(object != "nothing")
 
+  if(nrow(df_res) == 0) return(NULL)
+
   camera_position <- filter(fspr_obj$position, iAnalysis == i_screenshot) %>%
     select(starts_with("position")) %>%
-    as.vector()
+    unlist()
 
   df_positions <- fspr_obj$object_positions %>%
     filter(object %in% df_res$object) %>%
