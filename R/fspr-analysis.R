@@ -60,3 +60,10 @@ create_screenshot_summary <- function(fspr_obj, i_screenshot){
   df_res <- right_join(df_distances, df_res, by = "object")
   return(df_res)
 }
+
+#' Creates a summary of the differences between two screenshots.
+#' 
+#' @export 
+check_screenshot_difference <- function(fspr_obj1, fspr_obj2, i_screenshot) {
+
+}
